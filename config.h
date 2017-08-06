@@ -10,7 +10,7 @@ static const char *fonts[]          = { "Inconsolata:size=9" };
 static const char dmenufont[]       = "Inconsolata:size=9";
 static const char col_gray1[]       = "#20201d"; /* base00 */
 static const char col_gray2[]       = "#292824"; /* base01 */
-static const char col_gray3[]       = "#e8e4cd"; /* base06 */
+static const char col_gray3[]       = "#a6a28c"; /* base05 */
 static const char col_gray4[]       = "#fbfebc"; /* base07 */
 static const char col_cyan[]        = "#20201d"; /* base00 */
 static const char *colors[][3]      = {
