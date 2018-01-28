@@ -22,7 +22,6 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-
 static const Rule rules[] = {{}};
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -50,38 +49,38 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
-static const char *volupcmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%+"};
-static const char *voldowncmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%-"};
-static const char *volmutecmd[] = {"amixer", "-D", "pulse", "sset", "Master", "toggle"};
-static const char *scrotcmd[] = {"scrot", "-e" , "'mv $f ~/Pictures/screenshots/'"};
-static const char *prtsccmd[] = {"scrot", "%Y.%m.%d-$wx$h.png", "--quality", "100", "-e", "'mv $f /home/marinos/Pictures/screenshots/'",  NULL};
-
+static const char *volupcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+" };
+static const char *voldowncmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-" };
+static const char *volmutecmd[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle" };
+static const char outputDir[] = "~/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png";
+static const char *scrotcmd[] = { "scrot", NULL };
+static const char *prtsccmd[] = { "scrot", "-s", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{Keypress, MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{Keypress, MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{Keypress, MODKEY,                       XK_b,      togglebar,      {0} },
-	{Keypress, MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{Keypress, MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{Keypress, MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{Keypress, MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{Keypress, MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{Keypress, MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{Keypress, MODKEY,                       XK_Return, zoom,           {0} },
-	{Keypress, MODKEY,                       XK_Tab,    view,           {0} },
-	{Keypress, MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{Keypress, MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{Keypress, MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{Keypress, MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{Keypress, MODKEY,                       XK_space,  setlayout,      {0} },
-	{Keypress, MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{Keypress, MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{Keypress, MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{Keypress, MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{Keypress, MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{Keypress, MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{Keypress, MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{KeyPress, MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{KeyPress, MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{KeyPress, MODKEY,                       XK_b,      togglebar,      {0} },
+	{KeyPress, MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{KeyPress, MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{KeyPress, MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{KeyPress, MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{KeyPress, MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{KeyPress, MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{KeyPress, MODKEY,                       XK_Return, zoom,           {0} },
+	{KeyPress, MODKEY,                       XK_Tab,    view,           {0} },
+	{KeyPress, MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{KeyPress, MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{KeyPress, MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{KeyPress, MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{KeyPress, MODKEY,                       XK_space,  setlayout,      {0} },
+	{KeyPress, MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{KeyPress, MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{KeyPress, MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{KeyPress, MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{KeyPress, MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{KeyPress, MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{KeyPress, MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -91,15 +90,16 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{Keypress, MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{KeyPress, MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
 	/**
 	 * Custom Keybindings
 	 */
-	{Keypress, 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd} },
-	{Keypress, 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd} },
-	{Keypress, 0, XF86XK_AudioMute, spawn, {.v = volmutecmd} },
-	{KeyRelease, 0, XK_Print, spawn, {.v = prtsccmd} },
+	{KeyPress, 0, XF86XK_AudioRaiseVolume, spawn, { .v = volupcmd } },
+	{KeyPress, 0, XF86XK_AudioLowerVolume, spawn, { .v = voldowncmd } },
+	{KeyPress, 0, XF86XK_AudioMute, spawn, { .v = volmutecmd } },
+	{KeyPress, ShiftMask, XK_Print, spawn, { .v = scrotcmd } },
+	{KeyRelease, 0, XK_Print, spawn, { .v = prtsccmd } },
 };
 
 /* button definitions */
@@ -118,4 +118,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
