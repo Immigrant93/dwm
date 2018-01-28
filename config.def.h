@@ -53,6 +53,7 @@ static const char *termcmd[]  = { "urxvt", NULL };
 static const char *volupcmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%+"};
 static const char *voldowncmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%-"};
 static const char *volmutecmd[] = {"amixer", "-D", "pulse", "sset", "Master", "toggle"};
+static const char *scrotcmd[] = {"scrot", "-e" , "'mv $f ~/Pictures/screenshots/'"};
 static const char *prtsccmd[] = {"scrot", "%Y.%m.%d-$wx$h.png", "--quality", "100", "-e", "'mv $f /home/marinos/Pictures/screenshots/'",  NULL};
 
 
