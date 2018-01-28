@@ -52,7 +52,6 @@ static const char *termcmd[]  = { "urxvt", NULL };
 static const char *volupcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+" };
 static const char *voldowncmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-" };
 static const char *volmutecmd[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle" };
-static const char outputDir[] = "~/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png";
 static const char *scrotcmd[] = { "scrot", NULL };
 static const char *prtsccmd[] = { "scrot", "-s", NULL };
 
