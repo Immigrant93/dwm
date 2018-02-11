@@ -8,11 +8,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata:size=9" };
 static const char dmenufont[]       = "Inconsolata:size=9";
-static const char col_gray1[]       = "#20201d"; /* base00 */
-static const char col_gray2[]       = "#292824"; /* base01 */
-static const char col_gray3[]       = "#e8e4cd"; /* base06 */
-static const char col_gray4[]       = "#fbfebc"; /* base07 */
-static const char col_cyan[]        = "#20201d"; /* base00 */
+static const char col_gray1[]       = "#222222"; /* base00 */
+static const char col_gray2[]       = "#444444"; /* base01 */
+static const char col_gray3[]       = "#bbbbbb"; /* base06 */
+static const char col_gray4[]       = "#eeeeee"; /* base07 */
+static const char col_cyan[]        = "#005577"; /* base00 */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -22,7 +22,14 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-static const Rule rules[] = {{}};
+static const Rule rules[] = {
+	/* xprop(1):
+	 *	WM_CLASS(STRING) = instance, class
+	 *	WM_NAME(STRING) = title
+	 */
+	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "urxvt", NULL, NULL, 0, 0, -1}
+};
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
