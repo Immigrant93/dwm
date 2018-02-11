@@ -2,7 +2,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -28,7 +28,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "urxvt", NULL, NULL, 0, 0, -1}
+	{ "st", NULL, NULL, 0, 0, -1}
 };
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -55,7 +55,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *volupcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+" };
 static const char *voldowncmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-" };
 static const char *volmutecmd[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle" };
